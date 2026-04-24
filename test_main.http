@@ -1,0 +1,193 @@
+# QS Service - HTTP 测试文件
+# 全自动平台服务 API 测试
+
+### 健康检查
+GET http://127.0.0.1:8000/health
+Accept: application/json
+
+### 根路径
+GET http://127.0.0.1:8000/
+Accept: application/json
+
+### 系统信息
+GET http://127.0.0.1:8000/api/v1/system/info
+Accept: application/json
+
+### 系统健康检查
+GET http://127.0.0.1:8000/api/v1/system/health
+Accept: application/json
+
+### 系统配置
+GET http://127.0.0.1:8000/api/v1/system/config
+Accept: application/json
+
+###
+
+# ===== 认证相关 =====
+
+### 用户注册
+POST http://127.0.0.1:8000/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "Test1234!",
+  "full_name": "Test User"
+}
+
+### 用户登录
+POST http://127.0.0.1:8000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "Test1234!"
+}
+
+### 刷新Token
+POST http://127.0.0.1:8000/api/v1/auth/refresh
+Content-Type: application/json
+
+{
+  "refresh_token": "your-refresh-token-here"
+}
+
+###
+
+# ===== 用户相关 =====
+
+### 获取当前用户信息
+GET http://127.0.0.1:8000/api/v1/users/me
+Authorization: Bearer your-access-token-here
+Accept: application/json
+
+### 更新当前用户信息
+PUT http://127.0.0.1:8000/api/v1/users/me
+Authorization: Bearer your-access-token-here
+Content-Type: application/json
+
+{
+  "full_name": "Updated Name",
+  "email": "updated@example.com"
+}
+
+### 修改密码
+POST http://127.0.0.1:8000/api/v1/users/me/password
+Authorization: Bearer your-access-token-here
+Content-Type: application/json
+
+{
+  "old_password": "Test1234!",
+  "new_password": "NewPass123!"
+}
+
+###
+
+# ===== 任务相关 =====
+
+### 获取任务列表
+GET http://127.0.0.1:8000/api/v1/tasks?page=1&page_size=20
+Authorization: Bearer your-access-token-here
+Accept: application/json
+
+### 按状态筛选任务
+GET http://127.0.0.1:8000/api/v1/tasks?status=pending
+Authorization: Bearer your-access-token-here
+Accept: application/json
+
+### 按类型筛选任务
+GET http://127.0.0.1:8000/api/v1/tasks?task_type=one_time
+Authorization: Bearer your-access-token-here
+Accept: application/json
+
+### 关键词搜索任务
+GET http://127.0.0.1:8000/api/v1/tasks?keyword=test
+Authorization: Bearer your-access-token-here
+Accept: application/json
+
+### 创建一次性任务
+POST http://127.0.0.1:8000/api/v1/tasks
+Authorization: Bearer your-access-token-here
+Content-Type: application/json
+
+{
+  "name": "Hello World Task",
+  "description": "A simple test task",
+  "task_type": "one_time",
+  "priority": "medium",
+  "command": "echo 'Hello World'",
+  "timeout": 3600,
+  "max_retries": 3
+}
+
+### 创建定时任务
+POST http://127.0.0.1:8000/api/v1/tasks
+Authorization: Bearer your-access-token-here
+Content-Type: application/json
+
+{
+  "name": "Daily Backup",
+  "description": "Daily database backup task",
+  "task_type": "scheduled",
+  "priority": "high",
+  "command": "python backup.py",
+  "cron_expression": "0 2 * * *",
+  "timeout": 7200,
+  "max_retries": 2
+}
+
+### 获取任务详情
+GET http://127.0.0.1:8000/api/v1/tasks/1
+Authorization: Bearer your-access-token-here
+Accept: application/json
+
+### 更新任务
+PUT http://127.0.0.1:8000/api/v1/tasks/1
+Authorization: Bearer your-access-token-here
+Content-Type: application/json
+
+{
+  "name": "Updated Task Name",
+  "priority": "high",
+  "timeout": 7200
+}
+
+### 删除任务
+DELETE http://127.0.0.1:8000/api/v1/tasks/1
+Authorization: Bearer your-access-token-here
+
+### 执行任务
+POST http://127.0.0.1:8000/api/v1/tasks/1/execute
+Authorization: Bearer your-access-token-here
+Content-Type: application/json
+
+{
+  "params": {
+    "env": "production",
+    "debug": false
+  }
+}
+
+### 获取任务日志
+GET http://127.0.0.1:8000/api/v1/tasks/1/logs?page=1&page_size=50
+Authorization: Bearer your-access-token-here
+Accept: application/json
+
+### 获取任务统计
+GET http://127.0.0.1:8000/api/v1/tasks/statistics
+Authorization: Bearer your-access-token-here
+Accept: application/json
+
+###
+
+# ===== Swagger/OpenAPI 文档 =====
+
+### API 文档 (Swagger UI)
+GET http://127.0.0.1:8000/docs
+
+### API 文档 (ReDoc)
+GET http://127.0.0.1:8000/redoc
+
+### OpenAPI JSON
+GET http://127.0.0.1:8000/openapi.json

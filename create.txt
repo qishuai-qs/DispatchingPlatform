@@ -1,0 +1,24 @@
+project_name="your_project_name"
+
+mkdir -p $project_name/app/{api,services,models,crud,core,utils}
+mkdir -p $project_name/config
+mkdir -p $project_name/tests
+
+touch $project_name/app/__init__.py
+touch $project_name/app/api/__init__.py
+touch $project_name/app/services/__init__.py
+touch $project_name/app/models/__init__.py
+touch $project_name/app/crud/__init__.py
+touch $project_name/app/core/__init__.py
+touch $project_name/app/utils/__init__.py
+
+touch $project_name/config/app.yaml
+touch $project_name/.env
+touch $project_name/.env.example
+touch $project_name/main.py
+touch $project_name/pyproject.toml
+touch $project_name/README.md
+touch $project_name/tests/__init__.py
+touch $project_name/tests/test_api.py
+
+echo "项目 $project_name 创建完成！"
