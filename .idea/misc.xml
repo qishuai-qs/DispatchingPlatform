@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Poetry (qs_service)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Poetry (qs_service)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Poetry (webservice)" project-jdk-type="Python SDK" />
 </project>
