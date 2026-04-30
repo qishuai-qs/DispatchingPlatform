@@ -8,7 +8,7 @@ from typing import AsyncGenerator, Generator
 import pytest
 import pytest_asyncio
 from fastapi import FastAPI
-from httpx import AsyncClient
+from httpx import ASGITransport, AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -29,12 +29,8 @@ TestingSessionLocal = sessionmaker(
 )
 
 
-@pytest_asyncio.fixture(scope="session")
-def event_loop() -> Generator:
-    """创建事件循环"""
-    loop = asyncio.get_event_loop_policy().new_event_loop()
-    yield loop
-    loop.close()
+# 使用 pytest-asyncio 默认的事件循环 fixture
+# 不再自定义，避免与新版 pytest-asyncio 冲突
 
 
 @pytest_asyncio.fixture(scope="session")
@@ -74,7 +70,7 @@ def app(db_session: AsyncSession) -> FastAPI:
 @pytest_asyncio.fixture
 async def client(app: FastAPI) -> AsyncGenerator[AsyncClient, None]:
     """创建测试客户端"""
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
         yield ac
 
 

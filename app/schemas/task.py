@@ -5,7 +5,7 @@
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from app.models.task import TaskPriority, TaskStatus, TaskType
 
@@ -79,8 +79,7 @@ class TaskResponse(BaseModel):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class TaskSummary(BaseModel):
@@ -97,8 +96,7 @@ class TaskSummary(BaseModel):
     owner_id: int
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class TaskListResponse(BaseModel):
@@ -148,8 +146,7 @@ class TaskLogResponse(TaskLogBase):
     task_id: int
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class TaskLogListResponse(BaseModel):

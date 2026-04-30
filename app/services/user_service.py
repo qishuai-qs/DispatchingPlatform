@@ -28,14 +28,11 @@ class UserService:
     ) -> User:
         """
         用户注册
-
         Args:
             db: 数据库会话
             obj_in: 用户创建数据
-
         Returns:
             创建的用户对象
-
         Raises:
             ConflictError: 用户已存在
         """
@@ -61,14 +58,11 @@ class UserService:
     ) -> tuple[User, Token]:
         """
         用户登录
-
         Args:
             db: 数据库会话
             obj_in: 登录数据
-
         Returns:
             (用户对象, Token对象)
-
         Raises:
             AuthenticationError: 认证失败
         """
@@ -208,14 +202,11 @@ class UserService:
     ) -> Token:
         """
         刷新访问令牌
-
         Args:
             db: 数据库会话
             refresh_token: 刷新令牌
-
         Returns:
             新的Token对象
-
         Raises:
             AuthenticationError: 令牌无效
         """

@@ -49,11 +49,9 @@ class CRUDUser(CRUDBase[User, UserCreate, UserUpdate]):
     ) -> Optional[User]:
         """
         根据邮箱或用户名获取用户
-
         Args:
             db: 数据库会话
             login: 邮箱或用户名
-
         Returns:
             用户对象或None
         """
@@ -127,12 +125,10 @@ class CRUDUser(CRUDBase[User, UserCreate, UserUpdate]):
     ) -> Optional[User]:
         """
         验证用户凭据
-
         Args:
             db: 数据库会话
             login: 用户名或邮箱
             password: 密码
-
         Returns:
             验证通过的用户对象，失败返回None
         """

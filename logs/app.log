@@ -1,0 +1,125 @@
+2026-04-28 16:33:49 | INFO     | main:lifespan:37 - Starting qs-service v0.1.0
+2026-04-28 16:33:49 | INFO     | main:lifespan:38 - Environment: development
+2026-04-28 16:35:05 | INFO     | main:lifespan:37 - Starting qs-service v0.1.0
+2026-04-28 16:35:05 | INFO     | main:lifespan:38 - Environment: development
+2026-04-28 16:42:53 | INFO     | main:lifespan:37 - Starting qs-service v0.1.0
+2026-04-28 16:42:53 | INFO     | main:lifespan:38 - Environment: development
+2026-04-28 16:43:52 | INFO     | main:lifespan:37 - Starting qs-service v0.1.0
+2026-04-28 16:43:52 | INFO     | main:lifespan:38 - Environment: development
+2026-04-28 16:43:52 | INFO     | main:lifespan:42 - Database initialized
+2026-04-28 16:43:52 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-28 16:43:52 | INFO     | main:lifespan:46 - Scheduler started
+2026-04-28 17:39:30 | INFO     | main:lifespan:39 - Starting qs-service v0.1.0
+2026-04-28 17:39:30 | INFO     | main:lifespan:40 - Environment: development
+2026-04-28 17:39:30 | INFO     | main:lifespan:44 - Database initialized
+2026-04-28 17:39:30 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-28 17:39:30 | INFO     | main:lifespan:48 - Scheduler started
+2026-04-28 17:48:01 | INFO     | main:lifespan:53 - Shutting down application
+2026-04-28 17:48:01 | INFO     | app.services.scheduler:shutdown:59 - Task scheduler shutdown
+2026-04-28 17:48:01 | INFO     | main:lifespan:57 - Scheduler stopped
+2026-04-28 17:48:01 | INFO     | main:lifespan:61 - Database connection closed
+2026-04-28 20:01:34 | INFO     | app.services.user_service:register:49 - User registered: newuser (ID: 1)
+2026-04-28 20:12:17 | INFO     | app.services.user_service:register:49 - User registered: newuser123123 (ID: 2)
+2026-04-28 20:14:01 | INFO     | app.services.user_service:register:49 - User registered: newuser (ID: 3)
+2026-04-29 16:50:52 | INFO     | app.services.user_service:register:49 - User registered: testuser (ID: 4)
+2026-04-29 16:55:10 | INFO     | app.services.user_service:register:49 - User registered: anotheruser (ID: 5)
+2026-04-29 16:56:03 | INFO     | app.services.user_service:login:98 - User logged in: testuser (ID: 4)
+2026-04-29 16:56:07 | INFO     | app.services.user_service:login:98 - User logged in: testuser (ID: 4)
+2026-04-29 16:56:17 | INFO     | app.services.user_service:login:98 - User logged in: anotheruser (ID: 5)
+2026-04-29 16:56:19 | INFO     | app.services.user_service:login:98 - User logged in: anotheruser (ID: 5)
+2026-04-29 16:56:21 | INFO     | app.services.user_service:login:98 - User logged in: anotheruser (ID: 5)
+2026-04-29 17:18:20 | INFO     | main:lifespan:39 - Starting qs-service v0.1.0
+2026-04-29 17:18:20 | INFO     | main:lifespan:40 - Environment: development
+2026-04-29 17:18:20 | INFO     | main:lifespan:44 - Database initialized
+2026-04-29 17:18:20 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-29 17:18:20 | INFO     | main:lifespan:48 - Scheduler started
+2026-04-29 17:19:46 | INFO     | main:lifespan:53 - Shutting down application
+2026-04-29 17:19:46 | INFO     | app.services.scheduler:shutdown:59 - Task scheduler shutdown
+2026-04-29 17:19:46 | INFO     | main:lifespan:57 - Scheduler stopped
+2026-04-29 17:19:46 | INFO     | main:lifespan:61 - Database connection closed
+2026-04-29 17:19:47 | INFO     | main:lifespan:39 - Starting qs-service v0.1.0
+2026-04-29 17:19:47 | INFO     | main:lifespan:40 - Environment: development
+2026-04-29 17:19:47 | INFO     | main:lifespan:44 - Database initialized
+2026-04-29 17:19:47 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-29 17:19:47 | INFO     | main:lifespan:48 - Scheduler started
+2026-04-29 17:20:29 | INFO     | main:lifespan:53 - Shutting down application
+2026-04-29 17:20:29 | INFO     | app.services.scheduler:shutdown:59 - Task scheduler shutdown
+2026-04-29 17:20:29 | INFO     | main:lifespan:57 - Scheduler stopped
+2026-04-29 17:20:29 | INFO     | main:lifespan:61 - Database connection closed
+2026-04-29 17:20:30 | INFO     | main:lifespan:39 - Starting qs-service v0.1.0
+2026-04-29 17:20:30 | INFO     | main:lifespan:40 - Environment: development
+2026-04-29 17:20:30 | INFO     | main:lifespan:44 - Database initialized
+2026-04-29 17:20:30 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-29 17:20:30 | INFO     | main:lifespan:48 - Scheduler started
+2026-04-29 17:20:44 | INFO     | main:lifespan:53 - Shutting down application
+2026-04-29 17:20:44 | INFO     | app.services.scheduler:shutdown:59 - Task scheduler shutdown
+2026-04-29 17:20:44 | INFO     | main:lifespan:57 - Scheduler stopped
+2026-04-29 17:20:44 | INFO     | main:lifespan:61 - Database connection closed
+2026-04-29 17:20:44 | INFO     | main:lifespan:39 - Starting qs-service v0.1.0
+2026-04-29 17:20:44 | INFO     | main:lifespan:40 - Environment: development
+2026-04-29 17:20:44 | INFO     | main:lifespan:44 - Database initialized
+2026-04-29 17:20:44 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-29 17:20:44 | INFO     | main:lifespan:48 - Scheduler started
+2026-04-29 17:44:01 | INFO     | main:lifespan:53 - Shutting down application
+2026-04-29 17:44:01 | INFO     | app.services.scheduler:shutdown:59 - Task scheduler shutdown
+2026-04-29 17:44:01 | INFO     | main:lifespan:57 - Scheduler stopped
+2026-04-29 17:44:01 | INFO     | main:lifespan:61 - Database connection closed
+2026-04-29 17:44:02 | INFO     | main:lifespan:39 - Starting qs-service v0.1.0
+2026-04-29 17:44:02 | INFO     | main:lifespan:40 - Environment: development
+2026-04-29 17:44:02 | INFO     | main:lifespan:44 - Database initialized
+2026-04-29 17:44:02 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-29 17:44:02 | INFO     | main:lifespan:48 - Scheduler started
+2026-04-29 17:49:45 | INFO     | main:lifespan:53 - Shutting down application
+2026-04-29 17:49:45 | INFO     | app.services.scheduler:shutdown:59 - Task scheduler shutdown
+2026-04-29 17:49:45 | INFO     | main:lifespan:57 - Scheduler stopped
+2026-04-29 17:49:45 | INFO     | main:lifespan:61 - Database connection closed
+2026-04-29 17:49:46 | INFO     | main:lifespan:39 - Starting qs-service v0.1.0
+2026-04-29 17:49:46 | INFO     | main:lifespan:40 - Environment: development
+2026-04-29 17:49:46 | INFO     | main:lifespan:44 - Database initialized
+2026-04-29 17:49:46 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-29 17:49:46 | INFO     | main:lifespan:48 - Scheduler started
+2026-04-29 17:51:33 | INFO     | main:lifespan:53 - Shutting down application
+2026-04-29 17:51:33 | INFO     | app.services.scheduler:shutdown:59 - Task scheduler shutdown
+2026-04-29 17:51:33 | INFO     | main:lifespan:57 - Scheduler stopped
+2026-04-29 17:51:33 | INFO     | main:lifespan:61 - Database connection closed
+2026-04-29 17:51:34 | INFO     | main:lifespan:39 - Starting qs-service v0.1.0
+2026-04-29 17:51:34 | INFO     | main:lifespan:40 - Environment: development
+2026-04-29 17:51:34 | INFO     | main:lifespan:44 - Database initialized
+2026-04-29 17:51:34 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-29 17:51:34 | INFO     | main:lifespan:48 - Scheduler started
+2026-04-29 19:27:13 | INFO     | main:lifespan:53 - Shutting down application
+2026-04-29 19:27:13 | INFO     | app.services.scheduler:shutdown:59 - Task scheduler shutdown
+2026-04-29 19:27:13 | INFO     | main:lifespan:57 - Scheduler stopped
+2026-04-29 19:27:13 | INFO     | main:lifespan:61 - Database connection closed
+2026-04-29 19:27:14 | INFO     | main:lifespan:39 - Starting qs-service v0.1.0
+2026-04-29 19:27:14 | INFO     | main:lifespan:40 - Environment: development
+2026-04-29 19:27:14 | INFO     | main:lifespan:44 - Database initialized
+2026-04-29 19:27:14 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-29 19:27:14 | INFO     | main:lifespan:48 - Scheduler started
+2026-04-29 19:39:55 | INFO     | main:lifespan:53 - Shutting down application
+2026-04-29 19:39:55 | INFO     | app.services.scheduler:shutdown:59 - Task scheduler shutdown
+2026-04-29 19:39:55 | INFO     | main:lifespan:57 - Scheduler stopped
+2026-04-29 19:39:55 | INFO     | main:lifespan:61 - Database connection closed
+2026-04-29 19:39:56 | INFO     | main:lifespan:39 - Starting qs-service v0.1.0
+2026-04-29 19:39:56 | INFO     | main:lifespan:40 - Environment: development
+2026-04-29 19:39:56 | INFO     | main:lifespan:44 - Database initialized
+2026-04-29 19:39:56 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-29 19:39:56 | INFO     | main:lifespan:48 - Scheduler started
+2026-04-30 10:43:54 | INFO     | main:lifespan:53 - Shutting down application
+2026-04-30 10:43:54 | INFO     | app.services.scheduler:shutdown:59 - Task scheduler shutdown
+2026-04-30 10:43:54 | INFO     | main:lifespan:57 - Scheduler stopped
+2026-04-30 10:43:54 | INFO     | main:lifespan:61 - Database connection closed
+2026-04-30 10:43:55 | INFO     | main:lifespan:44 - Starting qs-service v0.1.0
+2026-04-30 10:43:55 | INFO     | main:lifespan:45 - Environment: development
+2026-04-30 10:43:55 | INFO     | main:lifespan:49 - Database initialized
+2026-04-30 10:43:55 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-30 10:43:55 | INFO     | main:lifespan:53 - Scheduler started
+2026-04-30 10:49:04 | INFO     | main:lifespan:58 - Shutting down application
+2026-04-30 10:49:04 | INFO     | app.services.scheduler:shutdown:59 - Task scheduler shutdown
+2026-04-30 10:49:04 | INFO     | main:lifespan:62 - Scheduler stopped
+2026-04-30 10:49:04 | INFO     | main:lifespan:66 - Database connection closed
+2026-04-30 10:49:05 | INFO     | main:lifespan:44 - Starting qs-service v0.1.0
+2026-04-30 10:49:05 | INFO     | main:lifespan:45 - Environment: development
+2026-04-30 10:49:05 | INFO     | main:lifespan:49 - Database initialized
+2026-04-30 10:49:05 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-30 10:49:05 | INFO     | main:lifespan:53 - Scheduler started

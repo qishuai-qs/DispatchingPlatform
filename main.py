@@ -3,12 +3,15 @@
 启动FastAPI应用
 """
 
+import os
 from contextlib import asynccontextmanager
 from datetime import datetime
 
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse, RedirectResponse
 
 from app.api.api import api_router
 from app.core.config import settings
@@ -23,6 +26,10 @@ from app.services.scheduler import scheduler
 from app.utils.logger import get_logger
 
 logger = get_logger("main")
+
+# 获取项目根目录（main.py 所在目录）
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_DIR = os.path.join(BASE_DIR, "static")
 
 
 @asynccontextmanager
@@ -92,6 +99,13 @@ def create_application() -> FastAPI:
     # 注册路由
     app.include_router(api_router)
 
+    # 挂载静态文件目录（使用绝对路径）
+    if os.path.exists(STATIC_DIR):
+        app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
+    # 记录应用启动时间
+    app.state.start_time = datetime.now()
+
     return app
 
 
@@ -102,15 +116,12 @@ app = create_application()
 @app.get("/", tags=["根路径"])
 async def root():
     """
-    根路径 - 返回应用基本信息
+    根路径 - 返回前端页面
     """
-    return {
-        "name": settings.app_name,
-        "version": settings.app_version,
-        "environment": settings.env,
-        "docs_url": "/docs",
-        "api_prefix": "/api/v1",
-    }
+    index_path = os.path.join(BASE_DIR, "static", "index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
+    return {"name": settings.app_name, "version": settings.app_version}
 
 
 @app.get("/health", tags=["健康检查"])

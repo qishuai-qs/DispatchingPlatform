@@ -53,7 +53,6 @@ class ErrorDetail(BaseModel):
 
 class HealthStatus(BaseModel):
     """健康状态"""
-
     status: str = Field(description="状态: healthy/degraded/unhealthy")
     version: str = Field(description="应用版本")
     timestamp: str = Field(description="检查时间")

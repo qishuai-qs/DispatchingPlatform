@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QS Service - 任务管理</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>QS Service</h2>
+            </div>
+            <nav>
+                <a href="#" class="nav-item active" onclick="showTab('tasks')">
+                    📋 任务管理
+                </a>
+                <a href="#" class="nav-item" onclick="showTab('users')">
+                    👤 用户管理
+                </a>
+                <a href="#" class="nav-item" onclick="showTab('system')">
+                    ⚙️ 系统状态
+                </a>
+            </nav>
+            <div class="user-info">
+                <span id="currentUser">admin</span>
+                <button onclick="logout()" class="btn-logout">退出</button>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 任务管理 -->
+            <div id="tasks-tab" class="tab-content active">
+                <header class="page-header">
+                    <h1>任务管理</h1>
+                    <button class="btn-primary" onclick="showCreateTask()">+ 创建任务</button>
+                </header>
+
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <h3>总任务</h3>
+                        <p id="totalTasks">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>运行中</h3>
+                        <p id="runningTasks" class="running">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>待执行</h3>
+                        <p id="pendingTasks">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>已完成</h3>
+                        <p id="completedTasks" class="success">0</p>
+                    </div>
+                </div>
+
+                <div class="task-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>任务名称</th>
+                                <th>类型</th>
+                                <th>状态</th>
+                                <th>优先级</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="taskTableBody">
+                            <!-- 动态填充 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 用户管理 -->
+            <div id="users-tab" class="tab-content">
+                <header class="page-header">
+                    <h1>个人中心</h1>
+                </header>
+                
+                <div class="profile-section">
+                    <div class="profile-card">
+                        <h3>👤 用户信息</h3>
+                        <div id="userInfo">
+                            <p><strong>用户名：</strong><span id="userUsername">-</span></p>
+                            <p><strong>邮箱：</strong><span id="userEmail">-</span></p>
+                            <p><strong>角色：</strong><span id="userRole">-</span></p>
+                            <p><strong>状态：</strong><span id="userStatus">-</span></p>
+                            <p><strong>注册时间：</strong><span id="userCreated">-</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-card">
+                        <h3>✏️ 修改信息</h3>
+                        <form id="updateProfileForm">
+                            <div class="form-group">
+                                <label>用户名</label>
+                                <input type="text" id="edit-username">
+                            </div>
+                            <div class="form-group">
+                                <label>邮箱</label>
+                                <input type="email" id="edit-email">
+                            </div>
+                            <div class="form-group">
+                                <label>全名</label>
+                                <input type="text" id="edit-fullname">
+                            </div>
+                            <button type="submit" class="btn-primary">保存修改</button>
+                        </form>
+                    </div>
+                    
+                    <div class="profile-card">
+                        <h3>🔒 修改密码</h3>
+                        <form id="changePasswordForm">
+                            <div class="form-group">
+                                <label>当前密码</label>
+                                <input type="password" id="old-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label>新密码</label>
+                                <input type="password" id="new-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label>确认新密码</label>
+                                <input type="password" id="confirm-password" required>
+                            </div>
+                            <button type="submit" class="btn-primary">修改密码</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 系统状态 -->
+            <div id="system-tab" class="tab-content">
+                <header class="page-header">
+                    <h1>系统状态</h1>
+                    <button class="btn-primary" onclick="refreshSystemInfo()">🔄 刷新</button>
+                </header>
+                
+                <div class="system-grid">
+                    <div class="system-card">
+                        <h3>📊 应用信息</h3>
+                        <div id="appInfo">
+                            <p><strong>应用名称：</strong><span id="sysName">-</span></p>
+                            <p><strong>版本：</strong><span id="sysVersion">-</span></p>
+                            <p><strong>环境：</strong><span id="sysEnv">-</span></p>
+                            <p><strong>状态：</strong><span id="sysStatus">-</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="system-card">
+                        <h3>⏱️ 调度器状态</h3>
+                        <div id="schedulerInfo">
+                            <p><strong>运行状态：</strong><span id="schedulerRunning">-</span></p>
+                            <p><strong>当前任务数：</strong><span id="schedulerJobs">-</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="system-card">
+                        <h3>🗄️ 数据库</h3>
+                        <div id="dbInfo">
+                            <p><strong>类型：</strong><span id="dbType">SQLite</span></p>
+                            <p><strong>状态：</strong><span class="status-success">已连接</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="system-card wide">
+                        <h3>📈 API 文档</h3>
+                        <p>FastAPI 自动生成的交互式 API 文档：</p>
+                        <div class="api-links">
+                            <a href="/docs" target="_blank" class="btn-primary">Swagger UI</a>
+                            <a href="/redoc" target="_blank" class="btn-primary">ReDoc</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 创建任务弹窗 -->
+    <div id="createTaskModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideCreateTask()">&times;</span>
+            <h2>创建任务</h2>
+            <form id="createTaskForm">
+                <div class="form-group">
+                    <label>任务名称</label>
+                    <input type="text" id="task-name" required>
+                </div>
+                <div class="form-group">
+                    <label>任务类型</label>
+                    <select id="task-type">
+                        <option value="one_time">一次性任务</option>
+                        <option value="scheduled">定时任务</option>
+                        <option value="recurring">周期性任务</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>优先级</label>
+                    <select id="task-priority">
+                        <option value="low">低</option>
+                        <option value="medium" selected>中</option>
+                        <option value="high">高</option>
+                        <option value="critical">紧急</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>执行命令</label>
+                    <textarea id="task-command" rows="3" placeholder="输入要执行的命令或脚本"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>描述</label>
+                    <textarea id="task-desc" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">创建</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+    <script>
+        // 检查登录状态
+        if (!localStorage.getItem('token')) {
+            window.location.href = '/';
+        }
+        
+        // 页面加载时获取数据
+        loadTasks();
+        loadSystemInfo();
+    </script>
+</body>
+</html>

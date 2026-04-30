@@ -6,40 +6,38 @@
 from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, Optional
 
+import bcrypt
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 
 from app.core.config import settings
-
-# 密码加密上下文
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     """
     验证密码
-
     Args:
         plain_password: 明文密码
         hashed_password: 加密后的密码
-
     Returns:
         是否匹配
     """
-    return pwd_context.verify(plain_password, hashed_password)
+    password_bytes = plain_password.encode('utf-8')
+    hashed_bytes = hashed_password.encode('utf-8')
+    return bcrypt.checkpw(password_bytes, hashed_bytes)
 
 
 def get_password_hash(password: str) -> str:
     """
     获取密码哈希值
-
     Args:
         password: 明文密码
-
     Returns:
         加密后的密码
     """
-    return pwd_context.hash(password)
+    password_bytes = password.encode('utf-8')
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password_bytes, salt)
+    return hashed.decode('utf-8')
 
 
 def create_access_token(
@@ -49,12 +47,10 @@ def create_access_token(
 ) -> str:
     """
     创建访问令牌
-
     Args:
         subject: 主题（通常是用户ID）
         expires_delta: 过期时间增量
         extra_claims: 额外声明
-
     Returns:
         JWT令牌字符串
     """

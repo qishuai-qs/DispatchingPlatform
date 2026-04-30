@@ -5,15 +5,12 @@
 
 from datetime import datetime
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
 
 from app.core.config import settings
 from app.schemas.common import HealthStatus, ResponseModel, SystemInfo
 
 router = APIRouter(prefix="/system", tags=["系统"])
-
-# 启动时间
-_start_time: datetime = datetime.now()
 
 
 @router.get(
@@ -21,14 +18,15 @@ _start_time: datetime = datetime.now()
     response_model=ResponseModel[SystemInfo],
     summary="获取系统信息",
 )
-async def get_system_info():
+async def get_system_info(request: Request):
     """
     获取系统运行信息
     """
-    import platform
     import sys
 
-    uptime = datetime.now() - _start_time
+    # 从应用状态获取启动时间
+    start_time = request.app.state.start_time
+    uptime = datetime.now() - start_time
     uptime_str = str(uptime).split(".")[0]  # 去掉微秒
 
     info = SystemInfo(

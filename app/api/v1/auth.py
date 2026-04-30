@@ -26,7 +26,6 @@ async def register(
 ):
     """
     用户注册
-
     - **username**: 用户名（3-50字符）
     - **email**: 邮箱地址
     - **password**: 密码（至少8位，包含大小写字母和数字）
@@ -50,10 +49,8 @@ async def login(
 ):
     """
     用户登录
-
     - **username**: 用户名或邮箱
     - **password**: 密码
-
     返回JWT访问令牌和刷新令牌
     """
     _, token = await user_service.login(db=db, obj_in=user_in)
@@ -74,9 +71,7 @@ async def refresh_token(
 ):
     """
     刷新访问令牌
-
     - **refresh_token**: 刷新令牌
-
     使用刷新令牌获取新的访问令牌
     """
     token = await user_service.refresh_token(db=db, refresh_token=refresh_token)

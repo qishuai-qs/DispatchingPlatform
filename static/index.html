@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QS Service - 登录</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>QS Service</h1>
+            <p class="subtitle">任务调度管理平台</p>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" id="username" name="username" required 
+                           placeholder="请输入用户名" value="admin">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" name="password" required 
+                           placeholder="请输入密码" value="admin123">
+                </div>
+                
+                <button type="submit" class="btn-login">登录</button>
+            </form>
+            
+            <p class="register-link">
+                还没有账号？<a href="#" onclick="showRegister()">立即注册</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- 注册弹窗 -->
+    <div id="registerModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="hideRegister()">&times;</span>
+            <h2>注册账号</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label>用户名</label>
+                    <input type="text" id="reg-username" required>
+                </div>
+                <div class="form-group">
+                    <label>邮箱</label>
+                    <input type="email" id="reg-email" required>
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" id="reg-password" required>
+                </div>
+                <div class="form-group">
+                    <label>确认密码</label>
+                    <input type="password" id="reg-password2" required>
+                </div>
+                <button type="submit" class="btn-login">注册</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
