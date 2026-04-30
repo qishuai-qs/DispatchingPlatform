@@ -123,3 +123,8 @@
 2026-04-30 10:49:05 | INFO     | main:lifespan:49 - Database initialized
 2026-04-30 10:49:05 | INFO     | app.services.scheduler:start:53 - Task scheduler started
 2026-04-30 10:49:05 | INFO     | main:lifespan:53 - Scheduler started
+2026-04-30 14:37:17 | INFO     | main:lifespan:44 - Starting qs-service v0.1.0
+2026-04-30 14:37:17 | INFO     | main:lifespan:45 - Environment: development
+2026-04-30 14:37:17 | INFO     | main:lifespan:49 - Database initialized
+2026-04-30 14:37:17 | INFO     | app.services.scheduler:start:53 - Task scheduler started
+2026-04-30 14:37:17 | INFO     | main:lifespan:53 - Scheduler started
