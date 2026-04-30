@@ -5,12 +5,14 @@ API集成测试
 import pytest
 from httpx import AsyncClient
 
+from tests.conftest import assert_response
+
 
 @pytest.mark.asyncio
 async def test_root_endpoint(client: AsyncClient):
     """测试根路径"""
     response = await client.get("/")
-    assert response.status_code == 200
+    assert_response(response, 200)
     data = response.json()
     assert "name" in data
     assert "version" in data
@@ -20,7 +22,7 @@ async def test_root_endpoint(client: AsyncClient):
 async def test_health_check(client: AsyncClient):
     """测试健康检查端点"""
     response = await client.get("/health")
-    assert response.status_code == 200
+    assert_response(response, 200)
     data = response.json()
     assert data["data"]["status"] == "healthy"
     assert "version" in data["data"]
@@ -33,7 +35,7 @@ async def test_system_info(client: AsyncClient, auth_headers: dict):
         "/api/v1/system/info",
         headers=auth_headers,
     )
-    assert response.status_code == 200
+    assert_response(response, 200)
     data = response.json()
     assert data["success"] is True
     assert "app_name" in data["data"]
@@ -46,7 +48,7 @@ async def test_system_config(client: AsyncClient, auth_headers: dict):
         "/api/v1/system/config",
         headers=auth_headers,
     )
-    assert response.status_code == 200
+    assert_response(response, 200)
     data = response.json()
     assert data["success"] is True
     assert "scheduler_enabled" in data["data"]
@@ -59,7 +61,7 @@ async def test_system_health(client: AsyncClient, auth_headers: dict):
         "/api/v1/system/health",
         headers=auth_headers,
     )
-    assert response.status_code == 200
+    assert_response(response, 200)
     data = response.json()
     assert data["success"] is True
     assert data["data"]["status"] in ["healthy", "degraded"]
@@ -69,7 +71,7 @@ async def test_system_health(client: AsyncClient, auth_headers: dict):
 async def test_unauthorized_access(client: AsyncClient):
     """测试未授权访问"""
     response = await client.get("/api/v1/users/me")
-    assert response.status_code == 401
+    assert_response(response, 401)
     data = response.json()
     assert data["success"] is False
 
@@ -81,7 +83,7 @@ async def test_get_current_user(client: AsyncClient, auth_headers: dict, test_us
         "/api/v1/users/me",
         headers=auth_headers,
     )
-    assert response.status_code == 200
+    assert_response(response, 200)
     data = response.json()
     assert data["success"] is True
     assert data["data"]["username"] == test_user.username
@@ -99,7 +101,7 @@ async def test_update_current_user(client: AsyncClient, auth_headers: dict, test
             "email": "updated@example.com",
         },
     )
-    assert response.status_code == 200
+    assert_response(response, 200)
     data = response.json()
     assert data["success"] is True
     assert data["data"]["full_name"] == "Updated Name"
@@ -121,7 +123,7 @@ async def test_create_task(client: AsyncClient, auth_headers: dict):
             "timeout": 3600,
         },
     )
-    assert response.status_code == 201
+    assert_response(response, 201)
     data = response.json()
     assert data["success"] is True
     assert data["data"]["name"] == "Test Task"
@@ -135,7 +137,7 @@ async def test_list_tasks(client: AsyncClient, auth_headers: dict):
         "/api/v1/tasks",
         headers=auth_headers,
     )
-    assert response.status_code == 200
+    assert_response(response, 200)
     data = response.json()
     assert data["success"] is True
     assert "items" in data["data"]
@@ -149,7 +151,7 @@ async def test_get_task_statistics(client: AsyncClient, auth_headers: dict):
         "/api/v1/tasks/statistics",
         headers=auth_headers,
     )
-    assert response.status_code == 200
+    assert_response(response, 200)
     data = response.json()
     assert data["success"] is True
     assert "total" in data["data"]

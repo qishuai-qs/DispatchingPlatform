@@ -7,6 +7,7 @@ from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.user import User
+from tests.conftest import assert_response
 
 
 @pytest.mark.asyncio
@@ -21,7 +22,7 @@ async def test_register(client: AsyncClient, db_session: AsyncSession):
             "full_name": "New User",
         },
     )
-    assert response.status_code == 201
+    assert_response(response, 201)
     data = response.json()
     assert data["success"] is True
     assert data["data"]["username"] == "newuser"
@@ -41,7 +42,7 @@ async def test_register_duplicate_username(
             "password": "Test1234!",
         },
     )
-    assert response.status_code == 409
+    assert_response(response, 409)
     data = response.json()
     assert data["success"] is False
 
@@ -59,7 +60,7 @@ async def test_register_duplicate_email(
             "password": "Test1234!",
         },
     )
-    assert response.status_code == 409
+    assert_response(response, 409)
     data = response.json()
     assert data["success"] is False
 
@@ -74,7 +75,7 @@ async def test_login(client: AsyncClient, test_user: User):
             "password": "Test1234!",
         },
     )
-    assert response.status_code == 200
+    assert_response(response, 200)
     data = response.json()
     assert data["success"] is True
     assert "access_token" in data["data"]
@@ -92,7 +93,7 @@ async def test_login_with_email(client: AsyncClient, test_user: User):
             "password": "Test1234!",
         },
     )
-    assert response.status_code == 200
+    assert_response(response, 200)
     data = response.json()
     assert data["success"] is True
 
@@ -107,7 +108,7 @@ async def test_login_wrong_password(client: AsyncClient, test_user: User):
             "password": "WrongPassword123!",
         },
     )
-    assert response.status_code == 401
+    assert_response(response, 401)
     data = response.json()
     assert data["success"] is False
 
@@ -122,6 +123,6 @@ async def test_login_nonexistent_user(client: AsyncClient):
             "password": "Test1234!",
         },
     )
-    assert response.status_code == 401
+    assert_response(response, 401)
     data = response.json()
     assert data["success"] is False

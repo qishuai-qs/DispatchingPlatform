@@ -137,3 +137,17 @@ def auth_headers(user_token: str) -> dict:
 def admin_auth_headers(admin_token: str) -> dict:
     """管理员认证请求头"""
     return {"Authorization": f"Bearer {admin_token}"}
+
+
+# 测试工具函数
+def assert_response(response, expected_status: int):
+    """断言响应状态码，失败时输出详细信息"""
+    if response.status_code != expected_status:
+        try:
+            body = response.json()
+            detail = body.get('message', body)
+        except:
+            detail = response.text
+        raise AssertionError(
+            f"Expected {expected_status}, got {response.status_code}: {detail}"
+        )
