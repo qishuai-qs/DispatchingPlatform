@@ -5,7 +5,6 @@
 
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.ext.asyncio import AsyncSession
-
 from app.api.deps import get_db_session
 from app.schemas.common import ResponseModel
 from app.schemas.user import Token, UserCreate, UserLogin, UserResponse
